@@ -29,7 +29,7 @@ void BFS(int* a, int* queue, int* visited, int n)
 	int i, j, s;
 	printf("\nEnter the source vertex:- ");
 	scanf("%d",&s);
-	printf("\nThe BFS Travsersal of the Graph:\n");
+	printf("\nThe BFS travsersal of the graph:\n");
 	EnQueue(queue, s, n);
 	*(visited + s) = 1;
 
@@ -37,7 +37,6 @@ void BFS(int* a, int* queue, int* visited, int n)
 	{
 		printf("%d\t", *(queue + front));
 		i = DeQueue(queue);
-		*(visited + i) = 1;
 		for (j = 0; j < n; j++)
 		{
 			if (*(a + i * n + j) == 1 && *(visited + j) == 0)

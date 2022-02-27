@@ -14,10 +14,9 @@ int main()
 	scanf("%d", &n);
 	a = (int*)malloc(n * sizeof(int));
 	printf("\nEnter the elements:- ");
-	for (i = 0; i < n; i++)
-	{	
+	for (i = 0; i < n; i++)	
 		scanf("%d", (a + i));
-	}
+	
 	printf("\nOriginal Array:\n");
 	Display(a, n);
 
@@ -32,9 +31,7 @@ void Display(int* a, int n)
 {
 	int i;
 	for (i = 0; i < n; i++)
-	{
 		printf("%d\t", *(a + i));
-	}
 }
 void QuickSort(int* a, int l, int r)
 {

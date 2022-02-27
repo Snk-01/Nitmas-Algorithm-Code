@@ -27,14 +27,13 @@ void DFS(int* a, int* stack, int* visited, int n)
 	int i, j, s;
 	printf("\nEnter the source vertex:- ");
 	scanf("%d",&s);
-	printf("\nThe DFS Traversal of the graph:\n");
+	printf("\nThe DFS traversal of the graph:\n");
 	Push(stack, s, n);
 	*(visited + s) = 1;
 	while (top != -1)
 	{
 		printf("%d\t", *(stack + top));
 		i = Pop(stack);
-		*(visited + i) = 1;
 		for (j = 0; j < n; j++)
 		{
 			if (*(a + i * n + j) == 1 && *(visited+j)==0)

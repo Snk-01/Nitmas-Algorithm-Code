@@ -15,6 +15,8 @@ int main()
 		scanf("%d",(a+i));
 	
 	printf("\nThe maximum element is %d and minimum element is %d",(Find(a,0,n-1,0)),Find(a,0,n-1,1));
+
+	return 0;
 }
 int Find(int*a,int l,int r,int k)
 {
