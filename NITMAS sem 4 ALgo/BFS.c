@@ -20,17 +20,7 @@ int main()
 		*(a + i * n + j) = *(a + j * n + i) = 1;
 		c--;
 	}
-	for (i = 0; i < n; i++)
-	{
-		flag=1;
-		for (j = 0; j < n; j++)
-		{
-			if(*(a+i*n+j)==1)
-				flag=0;
-		}
-		if(flag==1)
-			*(visited+i)=1;
-	}
+	
 	BFS(a, queue, visited, n);
 
 	return 0;
