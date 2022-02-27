@@ -20,7 +20,6 @@ int main()
 		*(a + i * n + j) = *(a + j * n + i) = 1;
 		c--;
 	}
-	
 	BFS(a, queue, visited, n);
 
 	return 0;
