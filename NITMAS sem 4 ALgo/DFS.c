@@ -20,7 +20,6 @@ int main()
 		*(a + i * n + j) = *(a + j * n + i) = 1;
 	}
 	DFS(a, stack, visited, n);
-
 	return 0;
 }
 void DFS(int* a, int* stack, int* visited, int n)
