@@ -19,17 +19,6 @@ int main()
 		scanf("%d %d", &i, &j);
 		*(a + i * n + j) = *(a + j * n + i) = 1;
 	}
-	for (i = 0; i < n; i++)
-	{
-		flag=1;
-		for (j = 0; j < n; j++)
-		{
-			if(*(a+i*n+j)==1)
-				flag=0;
-		}
-		if(flag==1)
-			*(visited+i)=1;
-	}
 	DFS(a, stack, visited, n);
 
 	return 0;
