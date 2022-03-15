@@ -44,7 +44,7 @@ int main()
 	Min_SpanTree(a,n);
 	return 0;
 }
-/*void Min_SpanTree(int*a,int n)
+void Min_SpanTree(int*a,int n)
 {
 	int e1=1,i,j,min=INT_MAX,totalcost=0,s,e,u,v;
 	while(e1<=n-1)
@@ -75,7 +75,7 @@ int main()
 		
 	}
 	printf("\nTotal minimum cost of the spanning tree is: %d",totalcost);
-}*/
+}
 int Find(int u)
 {
 	while(parent[u])
