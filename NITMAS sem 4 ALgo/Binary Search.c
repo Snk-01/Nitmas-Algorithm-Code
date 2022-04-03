@@ -57,6 +57,4 @@ int search(int* a, int val,int lb,int ub)
 		{
 			return 1;
 		}
-		
-
 }

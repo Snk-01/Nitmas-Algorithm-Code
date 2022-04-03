@@ -46,8 +46,8 @@ int main()
 }
 void Min_SpanTree(int*a,int n)
 {
-	int e1=1,i,j,min=INT_MAX,totalcost=0,s,e,u,v;
-	while(e1<=n-1)
+	int e1=0,i,j,min=INT_MAX,totalcost=0,s,e,u,v;
+	while(e1<n-1)
 	{
 		for(i=0;i<n;i++)
 		{
