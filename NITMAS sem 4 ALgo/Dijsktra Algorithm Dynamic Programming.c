@@ -61,14 +61,14 @@ void SSSP(struct vertex *vt,int v,int*a ,int s)
 			}
 
 		}
-		printf("\nStep %d:",i);
+		/*printf("\nStep %d:",i);
 		for(j=1;j<v;j++)
 		{
 			if(vt[j].selected>0)
 				printf("\t[%d,%d,%d]",j,vt[j].selected,vt[j].cost);
 		}
-		puts("");
-
+		puts("");*/
+		
 		min=INT_MAX,k=-1;
 		for(j=1;j<v;j++)
 		{
