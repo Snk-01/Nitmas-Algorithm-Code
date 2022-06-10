@@ -20,10 +20,10 @@ int main()
 
 	b=search(a, p, 0, n-1);
 
-	if (b == 1)
-		printf("\nElement found.\n");
-	else
-		printf("\nElement not found.\n");
+	//if (b != -1)
+		printf("\nElement found %d.\n",b);
+	//else
+		//printf("\nElement not found.\n");
 
 	return 0;
 
@@ -38,7 +38,7 @@ int search(int* a, int val,int lb,int ub)
 {
 	int mid;
 	if (lb > ub)
-		return 0;
+		return lb;
 
 	mid = (lb + ub) / 2;
 
@@ -55,6 +55,6 @@ int search(int* a, int val,int lb,int ub)
 		}
 		else
 		{
-			return 1;
+			return mid;
 		}
 }

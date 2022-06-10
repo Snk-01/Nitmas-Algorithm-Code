@@ -1,97 +1,85 @@
-#include <stdbool.h>
-#include <stdio.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<limits.h>
 
-// Number of vertices in the graph
-#define V 4
-
-void printSolution(int color[]);
-
-// check if the colored
-// graph is safe or not
-bool isSafe(bool graph[V][V], int color[])
-{
-	// check for every edge
-	for (int i = 0; i < V; i++)
-		for (int j = i + 1; j < V; j++)
-			if (graph[i][j] && color[j] == color[i])
-				return false;
-	return true;
-}
-
-/* This function solves the m Coloring
-problem using recursion. It returns
-false if the m colours cannot be assigned,
-otherwise, return true and prints
-assignments of colours to all vertices.
-Please note that there may be more than
-one solutions, this function prints one
-of the feasible solutions.*/
-bool graphColoring(bool graph[V][V], int m, int i,
-				int color[V])
-{
-	// if current index reached end
-	if (i == V) {
-		// if coloring is safe
-		if (isSafe(graph, color)) {
-			// Print the solution
-			printSolution(color);
-			return true;
-		}
-		return false;
-	}
-
-	// Assign each color from 1 to m
-	for (int j = 1; j <= m; j++) {
-		color[i] = j;
-
-		// Recur of the rest vertices
-		if (graphColoring(graph, m, i + 1, color))
-			return true;
-
-		color[i] = 0;
-	}
-
-	return false;
-}
-
-/* A utility function to print solution */
-void printSolution(int color[])
-{
-	printf("Solution Exists:"
-		" Following are the assigned colors \n");
-	for (int i = 0; i < V; i++)
-		printf(" %d ", color[i]);
-	printf("\n");
-}
-
-// Driver program to test above function
+/*
+9
+17
+0 1
+0 4
+0 5
+0 3
+1 5
+1 6
+1 7
+2 5
+2 6
+3 7
+4 5
+4 8
+5 6
+5 8
+6 7
+6 8
+7 8
+*/
+void Graph_color(int*,int);
 int main()
 {
-	/* Create following graph and
-	test whether it is 3 colorable
-	(3)---(2)
-	| / |
-	| / |
-	| / |
-	(0)---(1)
-	*/
-	bool graph[V][V] = {
-		{ 0, 1, 1, 1 },
-		{ 1, 0, 1, 0 },
-		{ 1, 1, 0, 1 },
-		{ 1, 0, 1, 0 },
-	};
-	int m = 3; // Number of colors
+	int* a, n, i, j,c;
+	printf("\nEnter the number of vertices and number of edges:- ");
+	scanf("%d %d", &n, &c);
+	a = (int*)calloc(n * n, sizeof(int)); 
+	printf("\nEnter the edges:\n");
+	while (c != 0)
+	{
+		scanf("%d %d", &i, &j);
+		*(a + i * n + j) = *(a + j * n + i) = 1;
 
-	// Initialize all color values as 0.
-	// This initialization is needed
-	// correct functioning of isSafe()
-	int color[V];
-	for (int i = 0; i < V; i++)
-		color[i] = 0;
-
-	if (!graphColoring(graph, m, 0, color))
-		printf("Solution does not exist");
-
+		c--;
+	}
+	Graph_color(a,n);
 	return 0;
+}
+void Graph_color(int*a,int n)
+{
+	int *colors,*vertices,*color2,i,j,val,k;
+	vertices=(int*)malloc(n*sizeof(int));
+	color2=(int*)calloc(n,sizeof(int));
+	for(i=0;i<n;i++)
+	{
+		*(vertices+i)=-1;
+	}
+	*(vertices+0)=0;
+	for(i=1;i<n;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			if(*(a+i*n+j)==1 && *(vertices+j)!=-1)
+			{
+				*(color2+*(vertices+j))=1;
+			}
+		}
+		val=-1;
+		for(j=0;j<n;j++)
+		{
+			if(*(color2+j)==0)
+			{
+				val=j;
+				break;
+			}
+		}
+		*(vertices+i)=val;
+		for(j=0;j<n;j++)
+		{
+			if(*(a+i*n+j)==1 && *(vertices+j)!=-1)
+			{
+				*(color2+*(vertices+j))=0;
+			}
+		}
+	}
+	for(i=0;i<n;i++)
+	{
+		printf("\n%d %c\n",i,(char)(*(vertices+i)+65));
+	}
 }
